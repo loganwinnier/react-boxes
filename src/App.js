@@ -1,9 +1,14 @@
 import './App.css';
+import BoxList from './BoxList';
+
+/**
+ * App -> <BoxList />
+ */
 
 function App() {
-  // return (
-
-  // );
+  return (
+    <BoxList />
+  );
 }
 
 export default App;
