@@ -13,7 +13,7 @@ import NewBoxForm from "./NewBoxForm";
  */
 
 function BoxList() {
-    const [boxList, setBoxList] = useState([]);
+    const [boxes, setBoxes] = useState([]);
 
     /**
     * Takes box object like { height, width, backgroundColor }
@@ -22,7 +22,7 @@ function BoxList() {
 
     function addBox(box) {
         let newBox = { ...box, id: uuid() };
-        setBoxList(boxes => [...boxes, newBox]);
+        setBoxes(boxes => [...boxes, newBox]);
     }
 
     /**
@@ -31,8 +31,8 @@ function BoxList() {
     */
 
     function removeBox(id) {
-        const updatedBoxList = boxList.filter(box => box.id !== id);
-        setBoxList(updatedBoxList);
+        const updatedBoxList = boxes.filter(box => box.id !== id);
+        setBoxes(updatedBoxList);
     }
 
     /**
@@ -42,13 +42,14 @@ function BoxList() {
     function renderItems() {
         return (
             <ul>
-                {boxList.map(box => (
+                {boxes.map(box => (
                     <li key={box.id}>
                         <Box
                             width={box.width}
                             height={box.height}
                             backgroundColor={box.backgroundColor}
-                            removeBox={() => removeBox(box.id)}
+                            id={box.id}
+                            removeBox={removeBox}
                         />
                     </li>
                 ))}
@@ -57,7 +58,7 @@ function BoxList() {
     }
 
     return (
-        <div>
+        <div className="BoxList">
             <NewBoxForm addBox={addBox} />
             {renderItems()}
         </div>

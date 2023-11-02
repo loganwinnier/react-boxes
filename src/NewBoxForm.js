@@ -3,6 +3,9 @@ import { useState } from "react";
 /**
  * Form for creating a new box to add to a list.
  *
+ * Props:
+ * - addBox: Callback for adding box to parent state.
+ *
  * State:
  * - formData: Object like { height, width, backgroundColor }
  *
